@@ -4,11 +4,9 @@
 @section('content')
     <h1>Usuários</h1>
 
-    @if ((session())->has('success'))
-        {{session('success')}}
-    @endif
-
     <a href="{{route('users.create')}}">Novo</a>
+
+    <x-alert/>
 
     <table>
         <theadr>
@@ -23,7 +21,9 @@
                 <tr>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>-</td>
+                    <td>
+                        <a href="{{route('users.edit', $user->id)}}">Edit</a>
+                    </td>
                 </tr>                    
             @empty
                 <tr>
